@@ -52,4 +52,4 @@ const descriptMap = function (list) {
   })
 }
 
-export { url, getAPIData, descriptList, problemMap, problemList }
+export { url, getAPIData, descriptList, problemMap, problemList, title }
