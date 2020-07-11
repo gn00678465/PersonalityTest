@@ -47,11 +47,11 @@ export default {
     countPlus () {
       if (this.count >= 3) return
       this.count += 1
+    },
+    changeComponents () {
+      const order = { 1: titlePage }
+      this.nowIs = order[this.count]
     }
-    // changeComponents () {
-    //   const order = { 1: titlePage, 2: problensPage, 3: finalPage }
-    //   this.nowIs = order[this.count]
-    // }
   },
   watch: {
     count () {
