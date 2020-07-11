@@ -9,12 +9,13 @@
 <script>
 import { url, getAPIData, title } from '@/assets/api.js'
 import titlePage from './title.vue'
+import problensPage from './problems.vue'
 
 export default {
   name: 'HelloWorld',
   components: {
-    titlePage
-    // problensPage,
+    titlePage,
+    problensPage
     // finalPage
   },
   data () {
@@ -49,7 +50,7 @@ export default {
       this.count += 1
     },
     changeComponents () {
-      const order = { 1: titlePage }
+      const order = { 1: titlePage, 2: problensPage }
       this.nowIs = order[this.count]
     }
   },

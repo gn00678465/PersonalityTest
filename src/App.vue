@@ -16,11 +16,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 :root {
-  --bg_color: #ddd;
+  --primary: #00BFA6;
+  --secondary: #9B9B9B;
+  --font-family: 'Noto Sans TC', sans-serif;
 }
 #app {
-  background-color: var(--bg_color);
+  background-color: var(--primary);
+  font-family: var(--font-family);
   width: 100%;
   height: 100vh;
   display: flex;
