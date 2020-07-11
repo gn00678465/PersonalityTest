@@ -40,9 +40,7 @@ const getMap = function (list) {
 
 const getProblem = function (list) {
   traits.en.forEach(item =>
-    list[item].problems.forEach(problem =>
-      proxyFn(problemList).push(problem)
-    )
+    list[item].problems.forEach(problem => proxyFn(problemList).push(problem))
   )
 }
 

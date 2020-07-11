@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <transition>
-      <component :is="nowIs" :datas="nowProps" @click.native="countPlus"/>
+      <component :is="nowIs" :datas="nowProps" @click="countPlus"/>
     </transition>
   </div>
 </template>
 
 <script>
-import { url, getAPIData, title } from '@/assets/api.js'
+import { url, getAPIData, title, problemMap, problemList } from '@/assets/api.js'
 import titlePage from './title.vue'
 import problensPage from './problems.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   components: {
     titlePage,
     problensPage
@@ -52,6 +52,7 @@ export default {
     changeComponents () {
       const order = { 1: titlePage, 2: problensPage }
       this.nowIs = order[this.count]
+      if (this.count === 2) { this.nowProps = { problemMap, problemList } }
     }
   },
   watch: {
@@ -59,7 +60,8 @@ export default {
       this.changeComponents()
     }
   },
-  computed: {}
+  computed: {
+  }
 }
 </script>
 
