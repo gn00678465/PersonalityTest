@@ -22,6 +22,9 @@ export default {
   --secondary: #9B9B9B;
   --font-family: 'Noto Sans TC', sans-serif;
 }
+*,*::before,*::after {
+  box-sizing: border-box;
+}
 #app {
   background-color: var(--primary);
   font-family: var(--font-family);

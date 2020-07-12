@@ -7,16 +7,17 @@
 </template>
 
 <script>
-import { url, getAPIData, title, problemMap, problemList } from '@/assets/api.js'
+import { url, getAPIData, title, problemMap, problemList, descriptList } from '@/assets/api.js'
 import titlePage from './title.vue'
 import problensPage from './problems.vue'
+import finalPage from './final'
 
 export default {
   name: 'Home',
   components: {
     titlePage,
-    problensPage
-    // finalPage
+    problensPage,
+    finalPage
   },
   data () {
     return {
@@ -49,10 +50,10 @@ export default {
       if (this.count >= 3) return
       this.count += 1
     },
-    changeComponents () {
-      const order = { 1: titlePage, 2: problensPage }
+    changeComponents (data) {
+      const order = { 1: titlePage, 2: problensPage, 3: finalPage }
       this.nowIs = order[this.count]
-      if (this.count === 2) { this.nowProps = { problemMap, problemList } }
+      if (this.count === 2) { this.nowProps = { problemMap, problemList } } else if (this.count === 2) { this.nowProps = { descriptList, data } }
     }
   },
   watch: {
@@ -68,9 +69,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .home {
-  max-width: 800px;
-  width: 800px;
-  height: 400px;
+  max-width: 1000px;
+  width: 1000px;
+  height: 500px;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.5),
