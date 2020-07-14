@@ -3,6 +3,7 @@ const url =
 
 let title = {} // title
 let traits = {} // 分類
+const traitsArr = [{}, {}, {}, {}, {}] // 分類整理
 const problemList = [] // 所有問題
 const problemMap = {} // 問題對應
 const descriptList = {} // 結果 sescript
@@ -23,9 +24,18 @@ const getAPIData = function (json) {
   title = json.name
   title.description = json.description
   traits = json.traits
+  sortTraits(json.traits)
   getMap(json.problemList)
   descriptMap(json.problemList)
   getProblem(json.problemList)
+}
+
+const sortTraits = function (data) {
+  Object.keys(data).forEach(lang => {
+    data[lang].forEach((item, index) => {
+      proxyFn(traitsArr)[index][lang] = item
+    })
+  })
 }
 
 const getMap = function (list) {
@@ -50,4 +60,4 @@ const descriptMap = function (list) {
   })
 }
 
-export { url, getAPIData, descriptList, problemMap, problemList, title }
+export { url, getAPIData, descriptList, problemMap, problemList, title, traitsArr }

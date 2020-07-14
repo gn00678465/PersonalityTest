@@ -54,7 +54,6 @@ export default {
     changePage () {
       this.setFraction()
       this.$emit('click', this.fractions)
-      console.log(this.fractions)
     },
     filterProblem () {
       const index = this.datas.problemList.findIndex(

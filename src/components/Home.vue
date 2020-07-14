@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { url, getAPIData, title, problemMap, problemList, descriptList } from '@/assets/api.js'
+import { url, getAPIData, title, problemMap, problemList, descriptList, traitsArr } from '@/assets/api.js'
 import titlePage from './title.vue'
 import problensPage from './problems.vue'
 import finalPage from './final'
@@ -23,7 +23,8 @@ export default {
     return {
       count: 1,
       nowIs: '',
-      nowProps: {}
+      nowProps: {},
+      fractions: {}
     }
   },
   created () {
@@ -46,14 +47,27 @@ export default {
       })
     },
     // components
-    countPlus () {
-      if (this.count >= 3) return
+    countPlus (data) {
+      if (this.count > 3) this.count = 1
       this.count += 1
+      this.fractions = data
     },
-    changeComponents (data) {
+    changeComponents () {
       const order = { 1: titlePage, 2: problensPage, 3: finalPage }
       this.nowIs = order[this.count]
-      if (this.count === 2) { this.nowProps = { problemMap, problemList } } else if (this.count === 2) { this.nowProps = { descriptList, data } }
+      if (this.count === 2) {
+        this.toProblem()
+      } else if (this.count === 3) {
+        this.toFinal()
+      }
+    },
+    toProblem () {
+      this.nowProps = { problemMap, problemList }
+    },
+    toFinal () {
+      const data = this.fractions
+      this.nowProps = { descriptList, data, traitsArr }
+      this.fractions = {}
     }
   },
   watch: {
