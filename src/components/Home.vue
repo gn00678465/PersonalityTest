@@ -90,7 +90,7 @@ export default {
   border-radius: 10px;
   box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.5),
     5px 15px 15px 6px rgba(0, 0, 0, 0.2);
-  background: #fff;
+  background: rgba(255, 255,255, 0.9);
 }
 
 .fade-enter-active, .fade-leave-active {

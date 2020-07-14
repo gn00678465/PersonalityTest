@@ -18,7 +18,7 @@
       </ul>
     </nav>
     <!-- content -->
-    <sections v-for="(val, key) in descriptLists" :key="key" :setKey="key" :setVal="val" />
+    <sections class="section" v-for="(val, key) in descriptLists" :key="key" :setKey="key" :setVal="val" />
   </div>
 </template>
 
@@ -87,7 +87,10 @@ a {
   height: 100%;
   overflow-x:hidden;
   overflow-y:auto;
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .nav {
   position: absolute;

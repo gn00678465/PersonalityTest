@@ -55,7 +55,8 @@ $fzList: 2.2rem, 1.5rem, 1.2rem;
   }
   .subtitle {
     font-size: nth($fzList, 2);
-    color: #ddd;
+    margin-top: 0.4rem;
+    color: #bbb;
   }
   .descript {
     line-height: 2;
