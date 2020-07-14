@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <transition>
+    <transition name="fade" mode="out-in">
       <component :is="nowIs" :datas="nowProps" @click="countPlus"/>
     </transition>
   </div>
@@ -9,15 +9,15 @@
 <script>
 import { url, getAPIData, title, problemMap, problemList, descriptList, traitsArr } from '@/assets/api.js'
 import titlePage from './title.vue'
-import problensPage from './problems.vue'
+import problemsPage from './problems.vue'
 import finalPage from './final'
 
 export default {
   name: 'Home',
   components: {
-    titlePage,
-    problensPage,
-    finalPage
+    'v-titlePage': titlePage,
+    'v-problemsPage': problemsPage,
+    'v-finalPage': finalPage
   },
   data () {
     return {
@@ -53,7 +53,7 @@ export default {
       this.fractions = data
     },
     changeComponents () {
-      const order = { 1: titlePage, 2: problensPage, 3: finalPage }
+      const order = { 1: 'v-titlePage', 2: 'v-problemsPage', 3: 'v-finalPage' }
       this.nowIs = order[this.count]
       if (this.count === 2) {
         this.toProblem()
@@ -92,4 +92,13 @@ export default {
     5px 15px 15px 6px rgba(0, 0, 0, 0.2);
   background: #fff;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

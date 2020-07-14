@@ -1,13 +1,13 @@
 <template>
   <div class="problemPage">
-    <rounder class="top_left" :count="count"/>
-    <div class="h3 problem">{{filterProblem().problem}}</div>
-    <div class="container">
-      <component :is="showComponent" :radioSetting="radioSet" v-model="radioVal" ref='radioCompontent'/>
-      <!-- <radios :radioSetting="radioSet" v-model="radioVal"/> -->
-      <button class="btn bottom_right btn__primary" type="button" v-if="count === 10" @click="changePage">{{showBtnText}}</button>
-      <button class="btn bottom_right btn__info" type="button" v-else @click="countActive">{{showBtnText}}</button>
-    </div>
+      <rounder class="top_left" :count="count"/>
+      <div class="h3 problem">{{filterProblem().problem}}</div>
+      <div class="container">
+        <component :is="showComponent" :radioSetting="radioSet" v-model="radioVal" ref='radioCompontent'/>
+        <!-- <radios :radioSetting="radioSet" v-model="radioVal"/> -->
+      </div>
+    <button class="btn bottom_right btn__primary" type="button" v-if="count === 10" @click="changePage">{{showBtnText}}</button>
+    <button class="btn bottom_right btn__info" type="button" v-else @click="countActive">{{showBtnText}}</button>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import radios from './parts/radios'
 
 export default {
   name: 'problemPage',
-  components: { rounder, radios },
+  components: { rounder, 'v-radios': radios },
   data () {
     return {
       count: 1,
@@ -28,7 +28,7 @@ export default {
         optionValName: 'fraction',
         options: []
       },
-      showComponent: radios,
+      showComponent: 'v-radios',
       radioVal: null,
       fractions: {}
     }
@@ -98,6 +98,7 @@ export default {
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
+  outline: none;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -165,4 +166,7 @@ export default {
     justify-content: space-around;
   }
 }
+
+// transition
+
 </style>

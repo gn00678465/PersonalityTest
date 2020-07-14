@@ -33,12 +33,15 @@ $info: #17a2b8, darken(#17a2b8, 10%);
   box-sizing: border-box;
 }
 #app {
-  background-color: #00BFA6;
   font-family: var(--font-family);
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('./assets/paper.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 </style>
