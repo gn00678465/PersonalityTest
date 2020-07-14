@@ -5,8 +5,8 @@
     <div class="container">
       <component :is="showComponent" :radioSetting="radioSet" v-model="radioVal" ref='radioCompontent'/>
       <!-- <radios :radioSetting="radioSet" v-model="radioVal"/> -->
-      <button class="btn bottom_right" type="button" v-if="count === 10" @click="changePage">{{showBtnText}}</button>
-      <button class="btn bottom_right" type="button" v-else @click="countActive">{{showBtnText}}</button>
+      <button class="btn bottom_right btn__primary" type="button" v-if="count === 10" @click="changePage">{{showBtnText}}</button>
+      <button class="btn bottom_right btn__info" type="button" v-else @click="countActive">{{showBtnText}}</button>
     </div>
   </div>
 </template>
@@ -114,6 +114,24 @@ export default {
   width: 50%;
   padding: 0.8rem 1rem;
   border-top-left-radius: 10px;
+  &__primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    &:hover {
+      background: var(--primary_hover);
+      border-color: var(--primary_hover);
+    }
+  }
+  &__info {
+    background: var(--info);
+    border-color: var(--info);
+    color: #fff;
+    &:hover {
+      background: var(--info_hover);
+      border-color: var(--info_hover);
+    }
+  }
 }
 .problemPage {
   position: relative;

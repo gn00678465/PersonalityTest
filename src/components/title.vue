@@ -5,7 +5,7 @@
       <h2 class="subtitle">{{datas.en}}</h2>
     </div>
     <p class="descript">{{datas.description}}</p>
-    <btn @click.native="emitClick"/>
+    <btn :btnText="'開始測驗'" @click.native="emitClick"/>
   </div>
 </template>
 
