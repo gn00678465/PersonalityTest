@@ -49,6 +49,8 @@ export default {
         this.setFraction()
         this.count += 1
         this.$refs.radioCompontent.value = 0
+      } else if (!parseInt(this.radioVal, 10)) {
+        this.showAlert()
       }
     },
     changePage () {
@@ -74,6 +76,12 @@ export default {
     setFraction () {
       this.fractions[this.filterProblem().category].push(this.radioVal)
       this.radioVal = null
+    },
+    showAlert () {
+      this.$swal.fire({
+        icon: 'error',
+        title: '請選擇一個項目'
+      })
     }
   },
   watch: {
