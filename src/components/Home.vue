@@ -59,6 +59,9 @@ export default {
         this.toProblem()
       } else if (this.count === 3) {
         this.toFinal()
+      } else if (this.count > 3) {
+        this.count = 1
+        this.loadData()
       }
     },
     toProblem () {

@@ -15,6 +15,11 @@
             <p class="nav__subtitle">{{traite['zh']}}</p>
           </a>
         </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#" @click.prevent="restart()">
+            <span class="nav__restart">重新測驗</span>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- content -->
@@ -53,6 +58,24 @@ export default {
         const elBottom = elTop + el.offsetHeight
         if (elTop <= this.scrollTop && elBottom > this.scrollTop) this.nowTarget = el.id
       })
+    },
+    restart () {
+      const vm = this
+      vm.$swal.fire({
+        title: '重新測驗?',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.value) {
+          vm.changePage()
+        }
+      })
+    },
+    changePage () {
+      this.$emit('click')
     }
   },
   computed: {
@@ -64,8 +87,6 @@ export default {
       })
       return descriptList
     }
-  },
-  watch: {
   }
 }
 </script>
@@ -140,6 +161,10 @@ a {
     &:focus {
       background-color: transparent;
     }
+  }
+  &__restart {
+    font-size: 18px;
+    transition: all 0.15s ease-out;
   }
 }
 .nav__link {
