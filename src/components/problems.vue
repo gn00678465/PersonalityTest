@@ -49,13 +49,14 @@ export default {
         this.setFraction()
         this.count += 1
         this.$refs.radioCompontent.value = 0
-      } else if (!parseInt(this.radioVal, 10)) {
-        this.showAlert()
-      }
+      } else if (!parseInt(this.radioVal, 10)) this.showAlert()
     },
     changePage () {
-      this.setFraction()
-      this.$emit('click', this.fractions)
+      if (!parseInt(this.radioVal, 10)) this.showAlert()
+      else {
+        this.setFraction()
+        this.$emit('click', this.fractions)
+      }
     },
     filterProblem () {
       const index = this.datas.problemList.findIndex(
