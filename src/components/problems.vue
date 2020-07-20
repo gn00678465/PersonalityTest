@@ -6,8 +6,8 @@
         <component :is="showComponent" :radioSetting="radioSet" v-model="radioVal" ref='radioCompontent'/>
         <!-- <radios :radioSetting="radioSet" v-model="radioVal"/> -->
       </div>
-    <button class="btn bottom_right btn__primary" type="button" v-if="count === 10" @click="changePage">{{showBtnText}}</button>
-    <button class="btn bottom_right btn__info" type="button" v-else @click="countActive">{{showBtnText}}</button>
+    <button class="btn bottom_right btn__primary" type="button" v-if="count === 10" @click="changePage" :disabled="!parseInt(this.radioVal, 10)">{{showBtnText}}</button>
+    <button class="btn bottom_right btn__info" type="button" v-else @click="countActive" :disabled="!parseInt(this.radioVal, 10)">{{showBtnText}}</button>
   </div>
 </template>
 
@@ -128,18 +128,24 @@ export default {
     background: var(--primary);
     border-color: var(--primary);
     color: #fff;
-    &:hover {
+    &:not(:disabled):hover {
       background: var(--primary_hover);
       border-color: var(--primary_hover);
+    }
+    &:disabled {
+      opacity: 0.65;
     }
   }
   &__info {
     background: var(--info);
     border-color: var(--info);
     color: #fff;
-    &:hover {
+    &:not(:disabled):hover {
       background: var(--info_hover);
       border-color: var(--info_hover);
+    }
+    &:disabled {
+      opacity: 0.65;
     }
   }
 }
